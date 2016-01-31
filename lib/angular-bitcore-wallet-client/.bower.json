@@ -1,0 +1,34 @@
+{
+  "name": "angular-bitcore-wallet-client",
+  "version": "1.1.7",
+  "description": "AngularJS module for bitcore-wallet-client library",
+  "author": "BitPay Inc",
+  "license": "MIT",
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bitpay/angular-bitcore-wallet-client.git"
+  },
+  "ignore": [
+    "**/.*",
+    "lib",
+    "node_modules",
+    "bower_components",
+    "Gruntfile.js",
+    "Makefile",
+    "index.js",
+    "test",
+    "Makefile",
+    "package.json"
+  ],
+  "homepage": "https://github.com/bitpay/angular-bitcore-wallet-client",
+  "_release": "1.1.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.7",
+    "commit": "caad4182424b93a233ae8e2df47b3ce897758844"
+  },
+  "_source": "git://github.com/bitpay/angular-bitcore-wallet-client.git",
+  "_target": "1.1.7",
+  "_originalSource": "angular-bitcore-wallet-client"
+}

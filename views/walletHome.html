@@ -177,6 +177,7 @@
           class="m20t text-gray size-12 text-center" 
           ng-show="!index.loadingWallet && !index.txHistory[0] && !index.updatingTxHistory[index.walletId] &&
           !index.txHistoryError && !index.updateError" translate>
+          {{myTrans}}
         No transactions yet
       </div>
       <div ng-show="index.updatingTxHistory[index.walletId] 
@@ -300,6 +301,26 @@
     -->
     <div id="receive" class="receive tab-view">
 
+
+
+
+
+      <div id="myQR" style="width:60%; height:60%;margin-left:20%; margin-top:5%;background-color:black" >
+
+       <div id="qrcodeAdd" width="100%"></div>
+
+
+      </div>
+      <!--private key -->
+
+     
+        <div id="qrcode" width="100%"></div>
+
+      
+
+      <!-- Original -->
+
+      <!--
       <div ng-show="index.needsBackup" class="p60t columns text-center">
         <div class="circle-icon">
           <i class="fi-alert size-48"></i>
@@ -320,7 +341,7 @@
           </span>
         </div>
         <div class="row">
-          <!-- Address-->
+          
           <div class="large-12 columns">
             <h2 class="text-center m10t" translate>My Bitcoin address</h2>
             <div class="text-center" ng-click="home.copyAddress(home.addr[index.walletId])" ng-show="home.addr[index.walletId] || home.generatingAddress">
@@ -373,6 +394,9 @@
         </div>
       </div>
       <div class="extra-margin-bottom"></div>
+
+
+    -->
     </div> <!-- END Receive -->
 
 

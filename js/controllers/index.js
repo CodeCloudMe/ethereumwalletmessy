@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('copayApp.controllers').controller('indexController', function($rootScope, $scope, $log, $filter, $timeout, pushNotificationsService, lodash, go, profileService, configService, isCordova, rateService, storageService, addressService, gettext, gettextCatalog, amMoment, nodeWebkit, addonManager, feeService, isChromeApp, bwsError, txFormatService, uxLanguage, $state, glideraService, isMobile, addressbookService) {
+angular.module('copayApp.controllers').controller('indexController', function($rootScope, $scope, $log, $http, $filter, $timeout, pushNotificationsService, lodash, go, profileService, configService, isCordova, rateService, storageService, addressService, gettext, gettextCatalog, amMoment, nodeWebkit, addonManager, feeService, isChromeApp, bwsError, txFormatService, uxLanguage, $state, glideraService, isMobile, addressbookService) {
   var self = this;
   var SOFT_CONFIRMATION_LIMIT = 12;
   self.isCordova = isCordova;
@@ -1501,5 +1501,39 @@ angular.module('copayApp.controllers').controller('indexController', function($r
       $rootScope.$apply();
     });
   });
+
+
+
+
+
+  // all our new shit
+
+$scope.getWalletTrans= function(){
+ $http.defaults.useXDomain = true;
+
+//delete $http.defaults.headers.common["X-Requested-With"];
+$http.defaults.headers.common["Accept"] = "application/json";
+$http.defaults.headers.common["Content-Type"] = "application/json";
+$http.get("http://peerther-tappar2.rhcloud.com/api/getTrans.php?wallet="+theCurrentWallet).then(function(response) {
+   // process response here..
+   $scope.myTrans= response;
+   console.log(response)
+ });
+
+}
+
+
+
+setTimeout(function(){
+   generateSingleWallet();
+
+   setTimeout(function(){
+       $scope.getWalletTrans();
+   }, 1000)
+  
+
+}, 3000)
+ 
+
 
 });

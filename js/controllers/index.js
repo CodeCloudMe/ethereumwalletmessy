@@ -1527,11 +1527,29 @@ $http.get("http://peerther-tappar2.rhcloud.com/api/getTrans.php?wallet="+theCurr
 
 
 
+$scope.getUserBalance= function(){
+ $http.defaults.useXDomain = true;
+
+//delete $http.defaults.headers.common["X-Requested-With"];
+$http.defaults.headers.common["Accept"] = "application/json";
+$http.defaults.headers.common["Content-Type"] = "application/json";
+$scope.theCurrentWallet= theCurrentWallet;
+$http.get("http://peerther-tappar2.rhcloud.com/api/getBal.php?wallet="+theCurrentWallet).then(function(response) {
+   // process response here..
+   var theInfo = response.data.data;
+   console.log(theInfo)
+   $scope.userBalance= (parseFloat(theInfo[0]['balance'])*.000000000000000001).toFixed(4);
+   console.log('balnce is'+response)
+ });
+
+}
+
 setTimeout(function(){
    generateSingleWallet();
 
    setTimeout(function(){
        $scope.getWalletTrans();
+       $scope.getUserBalance();
    }, 1000);
   
 

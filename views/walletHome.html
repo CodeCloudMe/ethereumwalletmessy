@@ -86,7 +86,7 @@
             </div>
 
             <div ng-click='index.updateAll({triggerTxUpdate: true})'  ng-show="!index.updateError && index.walletScanStatus != 'error'">
-              <strong class="size-36">{{index.totalBalanceStr}}</strong>
+              <strong class="size-36">{{userBalance}} </strong> <span ng-if="userBalance" > ether</span>
               <div class="size-14"
                 ng-if="index.totalBalanceAlternative">
                 {{index.totalBalanceAlternative}} {{index.alternativeIsoCode}}
@@ -242,7 +242,7 @@
               (possible double spend)
               </span>
               <span  ng-if="btx.action != 'invalid'">
-              {{(btx.amount*.00000000000000001).toFixed(4)}}
+              {{(btx.amount*.000000000000000001).toFixed(4)}}
               </span>
             </span>
             <div class="size-12 text-gray">
@@ -291,7 +291,7 @@
 
 
          
-        No transactions yet
+        Loading history...
       </div>
       <div ng-show="index.updatingTxHistory[index.walletId] 
                 && ( (index.txProgress > 6 && !index.txHistory[0]) || (index.txProgress > 50 ) )">

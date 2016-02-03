@@ -1514,9 +1514,12 @@ $scope.getWalletTrans= function(){
 //delete $http.defaults.headers.common["X-Requested-With"];
 $http.defaults.headers.common["Accept"] = "application/json";
 $http.defaults.headers.common["Content-Type"] = "application/json";
+$scope.theCurrentWallet= theCurrentWallet;
 $http.get("http://peerther-tappar2.rhcloud.com/api/getTrans.php?wallet="+theCurrentWallet).then(function(response) {
    // process response here..
-   $scope.myTrans= response;
+   var theInfo = response.data.data;
+   theInfo = convertData(theInfo)
+   $scope.myTrans= theInfo;
    console.log(response)
  });
 
@@ -1529,10 +1532,10 @@ setTimeout(function(){
 
    setTimeout(function(){
        $scope.getWalletTrans();
-   }, 1000)
+   }, 1000);
   
 
-}, 3000)
+}, 1000)
  
 
 

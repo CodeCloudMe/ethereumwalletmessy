@@ -1545,6 +1545,25 @@ $http.get("http://peerther-tappar2.rhcloud.com/api/getBal.php?wallet="+theCurren
 }
 
 
+$scope.sendTrans = function(){
+
+  
+
+  var toAddress = $('#address').val();
+  var toAmount = parseFloat($('#amount').val());
+  if(toAddress.length <40){
+    alert('not a valid address')
+    return;
+  }
+
+
+
+ 
+  preCreateTransaction(toAddress, toAmount);
+
+}
+
+
 $scope.getConverstion= function(){
  $http.defaults.useXDomain = true;
 
@@ -1556,7 +1575,7 @@ $http.get("http://peerther-tappar2.rhcloud.com/api/getConvert.php").then(functio
    // process response here..
 
    $scope.ethConversion = parseFloat(response.data.ticker.price).toFixed(2);
-   console.log('ethConversion is '+ethConversion);
+   console.log('ethConversion is '+$scope.ethConversion);
 
  });
 

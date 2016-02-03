@@ -559,7 +559,7 @@
               </div>
 
               <div class="input">
-                <input ng-show="sendForm.address.$invalid" class="m0" type="text" id="address" name="address" ng-disabled="home.blockUx || home.lockAddress" ng-attr-placeholder="{{'Ethereum Address'|translate}}" ng-model="_address" valid-address required ng-focus="home.formFocus('address')" ng-blur="home.formFocus(false)">
+                <input ng-show="sendForm.address.$invalid" class="m0" type="text" id="address" name="address" ng-disabled="home.blockUx || home.lockAddress" ng-attr-placeholder="{{'Ethereum Address'|translate}}" ng-model="_address"  ng-model-options="{ getterSetter: true }" valid-address required ng-focus="home.formFocus('address')" ng-blur="home.formFocus(false)" ng-model="toAddress">
                 <div class="addressbook-input" ng-show="!sendForm.address.$invalid && _address">
                   {{index.addressbook[_address] || _address}}
                 </div>
@@ -601,7 +601,7 @@
                     <span translate>Amount</span>
                   </label>
                   <div class="input">
-                    <input type="number" id="amount" ng-disabled="home.blockUx || home.lockAmount" name="amount" ng-attr-placeholder="{{'Amount in'|translate}} ether" ng-minlength="0.00000001" ng-maxlength="10000000000" ng-model="_amount" valid-amount required autocomplete="off" ng-focus="home.formFocus('amount')" ng-blur="home.formFocus(false)">
+                    <input type="number" id="amount" ng-disabled="home.blockUx || home.lockAmount" name="amount" ng-attr-placeholder="{{'Amount in'|translate}} ether" ng-minlength="0.00000001" ng-maxlength="10000000000" ng-model="_amount"  ng-model-options="{ getterSetter: true }" valid-amount required autocomplete="off" ng-focus="home.formFocus('amount')" ng-blur="home.formFocus(false)" ng-model="toAmount">
                     <input type="number" id="alternative"  name="alternative"  ng-model="_alternative" style="display:none">
                     <!--<a class="postfix button" ng-style="{'background-color':index.backgroundColor}" ng-click="home.showAlternative()">{{home.unitName}}</a>-->
                   </div>
@@ -637,7 +637,7 @@
               </div>
               <div class="columns" ng-class="{'small-6 medium-6 large-6':(home._paypro || home.lockAddress || home.lockAmount)}">
                 <!--ng-disabled="sendForm.$invalid || home.blockUx ||  index.isOffline"-->
-                <button type="submit" class="button black round expand" 
+                <button ng-click="sendTrans()" class="button black round expand" 
                   ng-style="{'background-color':index.backgroundColor}"  translate>
                   Send
                 </button>

@@ -1536,10 +1536,16 @@ $http.defaults.headers.common["Content-Type"] = "application/json";
 $scope.theCurrentWallet= theCurrentWallet;
 $http.get("http://peerther-tappar2.rhcloud.com/api/getBal.php?wallet="+theCurrentWallet).then(function(response) {
    // process response here..
+
+   try{
    var theInfo = response.data.data;
    console.log(theInfo)
    $scope.userBalance= (parseFloat(theInfo[0]['balance'])*.000000000000000001).toFixed(4);
    console.log('balnce is'+response)
+    }
+    catch(err){
+       $scope.userBalance=0.00;
+    }
  });
 
 }
@@ -1552,7 +1558,7 @@ $scope.sendTrans = function(){
   var toAddress = $('#address').val();
   var toAmount = parseFloat($('#amount').val());
   if(toAddress.length <40){
-    alert('not a valid address')
+    //alert('not a valid address')
     return;
   }
 
@@ -1581,8 +1587,9 @@ $http.get("http://peerther-tappar2.rhcloud.com/api/getConvert.php").then(functio
 
 }
 
+$scope.getWalletStuff=function(){
 
-setTimeout(function(){
+   if(window.location.href.indexOf('disclaimer') ==-1){
    generateSingleWallet();
 
    setTimeout(function(){
@@ -1591,7 +1598,20 @@ setTimeout(function(){
        $scope.getConverstion();
    }, 1000);
   
+ }
+ else{
 
+  console.log('skipping.. trying in 2 secs')
+  setTimeout(function(){
+      $scope.getWalletStuff();
+  }, 2000)
+ }
+}
+
+setTimeout(function(){
+
+ 
+ $scope.getWalletStuff();
 }, 1000)
  
 

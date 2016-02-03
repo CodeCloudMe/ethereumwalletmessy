@@ -887,6 +887,12 @@ angular.module('copayApp.controllers').controller('walletHomeController',
   };
 
   this.submitForm = function() {
+
+  
+
+     
+
+    return;
     var fc = profileService.focusedClient;
     var unitToSat = this.unitToSatoshi;
     var currentSpendUnconfirmed = configWallet.spendUnconfirmed;

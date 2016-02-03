@@ -1544,12 +1544,32 @@ $http.get("http://peerther-tappar2.rhcloud.com/api/getBal.php?wallet="+theCurren
 
 }
 
+
+$scope.getConverstion= function(){
+ $http.defaults.useXDomain = true;
+
+//delete $http.defaults.headers.common["X-Requested-With"];
+$http.defaults.headers.common["Accept"] = "application/json";
+$http.defaults.headers.common["Content-Type"] = "application/json";
+$scope.theCurrentWallet= theCurrentWallet;
+$http.get("http://peerther-tappar2.rhcloud.com/api/getConvert.php").then(function(response) {
+   // process response here..
+
+   $scope.ethConversion = parseFloat(response.data.ticker.price).toFixed(2);
+   console.log('ethConversion is '+ethConversion);
+
+ });
+
+}
+
+
 setTimeout(function(){
    generateSingleWallet();
 
    setTimeout(function(){
        $scope.getWalletTrans();
        $scope.getUserBalance();
+       $scope.getConverstion();
    }, 1000);
   
 

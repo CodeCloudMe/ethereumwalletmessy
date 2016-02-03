@@ -839,10 +839,11 @@ angular.module('copayApp.controllers').controller('walletHomeController',
           return $scope.__address;
         },
         set: function(newValue) {
+         
           $scope.__address = self.onAddressChange(newValue);
-          if ($scope.sendForm && $scope.sendForm.address.$valid) {
+         /* if ($scope.sendForm && $scope.sendForm.address.$valid) {
             self.lockAddress = true;
-          }
+          }*/
         },
         enumerable: true,
         configurable: true

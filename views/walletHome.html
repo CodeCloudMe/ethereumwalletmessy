@@ -88,8 +88,8 @@
             <div ng-click='index.updateAll({triggerTxUpdate: true})'  ng-show="!index.updateError && index.walletScanStatus != 'error'">
               <strong class="size-36">{{userBalance}} </strong> <span ng-if="userBalance" > ether</span>
               <div class="size-14"
-                ng-if="index.totalBalanceAlternative">
-                {{index.totalBalanceAlternative}} {{index.alternativeIsoCode}}
+                ng-if="ethConversion">
+               $1 USD = {{ethConversion}} ether
               </div>
               <div class="size-14"
                 ng-if="index.pendingAmount">
@@ -290,8 +290,8 @@
 
 
 
-         
-        Loading history...
+         <span ng-if="!myTrans">
+        Loading history...</span>
       </div>
       <div ng-show="index.updatingTxHistory[index.walletId] 
                 && ( (index.txProgress > 6 && !index.txHistory[0]) || (index.txProgress > 50 ) )">
@@ -522,7 +522,7 @@
 
       <div class="pr p25b">
         <h4 class="title m0">
-          {{theAmount}} Ether
+          {{userBalance}}  Ether
           <a 
             ng-show="!home.lockedCurrentFeePerKb && index.feeToSendMaxStr && index.availableBalanceSat > 0 && !home.blockUx && !home.lockAmount"
             ng-click="home.sendAll()"
@@ -549,8 +549,8 @@
                 </label>
                 <span ng-hide="sendForm.address.$pristine">
                   <span class="has-error right size-12" ng-show="sendForm.address.$invalid && _address">
-                    <i class="icon-close-circle size-14"></i>
-                    <span class="vm" translate>Not valid</span>
+                   <!-- <i class="icon-close-circle size-14"></i>
+                    <span class="vm" translate>Not valid</span>-->
                   </span>
                   <small class="right text-primary" ng-show="!sendForm.address.$invalid">
                     <i class="icon-checkmark-circle size-14"></i>
@@ -559,15 +559,15 @@
               </div>
 
               <div class="input">
-                <input ng-show="sendForm.address.$invalid" class="m0" type="text" id="address" name="address" ng-disabled="home.blockUx || home.lockAddress" ng-attr-placeholder="{{'Bitcoin address'|translate}}" ng-model="_address" valid-address required ng-focus="home.formFocus('address')" ng-blur="home.formFocus(false)">
+                <input ng-show="sendForm.address.$invalid" class="m0" type="text" id="address" name="address" ng-disabled="home.blockUx || home.lockAddress" ng-attr-placeholder="{{'Ethereum Address'|translate}}" ng-model="_address" valid-address required ng-focus="home.formFocus('address')" ng-blur="home.formFocus(false)">
                 <div class="addressbook-input" ng-show="!sendForm.address.$invalid && _address">
                   {{index.addressbook[_address] || _address}}
                 </div>
-                <a class="postfix size-12 m0 text-gray" 
+                <!--<a class="postfix size-12 m0 text-gray" 
                 ng-style="{'color':index.backgroundColor}"
                 ng-click="home.openDestinationAddressModal(index.otherWallets, _address)">
                   <i class="icon-wallet text-bold size-18"></i>
-                </a>
+                </a>-->
               </div>
             </div>
             <div ng-show="home._paypro && !home.hideAddress">
@@ -588,10 +588,10 @@
             <div class="row" ng-init="home.hideAlternative()" ng-hide="home.hideAmount">
               <div class="large-12 medium-12 columns">
                 <div class="right" ng-hide="sendForm.amount.$pristine && !sendForm.amount.$modelValue ">
-                  <span class="has-error right size-12" ng-if="sendForm.amount.$invalid">
+                 <!-- <span class="has-error right size-12" ng-if="sendForm.amount.$invalid">
                     <i class="icon-close-circle size-14"></i>
                     <span clas="vm" translate>Not valid</span>
-                  </span>
+                  </span>-->
                   <small class="text-primary right" ng-if="!sendForm.amount.$invalid && !sendForm.alternative.$invalid">
                     <i class="icon-checkmark-circle size-14"></i>
                   </small>
@@ -601,9 +601,9 @@
                     <span translate>Amount</span>
                   </label>
                   <div class="input">
-                    <input type="number" id="amount" ng-disabled="home.blockUx || home.lockAmount" name="amount" ng-attr-placeholder="{{'Amount in'|translate}} {{home.unitName}}" ng-minlength="0.00000001" ng-maxlength="10000000000" ng-model="_amount" valid-amount required autocomplete="off" ng-focus="home.formFocus('amount')" ng-blur="home.formFocus(false)">
+                    <input type="number" id="amount" ng-disabled="home.blockUx || home.lockAmount" name="amount" ng-attr-placeholder="{{'Amount in'|translate}} ether" ng-minlength="0.00000001" ng-maxlength="10000000000" ng-model="_amount" valid-amount required autocomplete="off" ng-focus="home.formFocus('amount')" ng-blur="home.formFocus(false)">
                     <input type="number" id="alternative"  name="alternative"  ng-model="_alternative" style="display:none">
-                    <a class="postfix button" ng-style="{'background-color':index.backgroundColor}" ng-click="home.showAlternative()">{{home.unitName}}</a>
+                    <!--<a class="postfix button" ng-style="{'background-color':index.backgroundColor}" ng-click="home.showAlternative()">{{home.unitName}}</a>-->
                   </div>
                 </div>
                 <div ng-if="home.canShowAlternative()">
@@ -636,7 +636,8 @@
                 <a ng-click="home.resetForm(sendForm)" class="button expand outline dark-gray round" translate>Cancel</a>
               </div>
               <div class="columns" ng-class="{'small-6 medium-6 large-6':(home._paypro || home.lockAddress || home.lockAmount)}">
-                <button type="submit" class="button black round expand" ng-disabled="sendForm.$invalid || home.blockUx ||  index.isOffline"
+                <!--ng-disabled="sendForm.$invalid || home.blockUx ||  index.isOffline"-->
+                <button type="submit" class="button black round expand" 
                   ng-style="{'background-color':index.backgroundColor}"  translate>
                   Send
                 </button>

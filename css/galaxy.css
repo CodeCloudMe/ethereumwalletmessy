@@ -1,0 +1,15 @@
+.space {
+	height: 220px;
+  overflow: hidden;
+}
+
+canvas {
+	position: inherit;
+	width: 100%;
+  //opacity: 0.5;
+}
+
+.mozork-header {
+	margin-top: -210px;
+	z-index: 10;
+}

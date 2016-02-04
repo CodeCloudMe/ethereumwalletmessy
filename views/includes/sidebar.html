@@ -1,8 +1,13 @@
 <nav class="sidebar left-off-canvas-menu" ng-controller="sidebarController as sidebar">
-  <header>
-   <h2>Simple Ethereum</h2>
-    <div ng-include="'views/includes/version.html'"></div>
-  </header>
+   <header>
+      <div class="space">
+         <canvas id="canvas"></canvas>
+      </div>
+      <div class="mozork-header">
+ 
+      <div ng-include="'views/includes/version.html'"></div>
+      </div>
+   </header>
   <ul class="off-canvas-list">
     <li ng-show="sidebar.wallets[0]"
     ng-repeat="item in sidebar.wallets track by $index"

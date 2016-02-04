@@ -5,7 +5,7 @@
 
 
 
- $resp = file_get_contents("https://www.etherchain.org/api/account/".$wallet);
+ $resp = file_get_contents("https://chaintrader.co/api/v1/balance?address=".$wallet);
 
 
 echo($resp);

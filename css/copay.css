@@ -911,6 +911,7 @@ ul.manage li {
 
 .sidebar li.nav-item.selected .name-wallet {
   color: #fff;
+  backgrond-color: #e9e9e9;
 }
 
 .name-wallet i {
@@ -2130,9 +2131,11 @@ a.missing-copayers {
   font-size: 70%;
   padding: 0.2rem 0.2rem;
 }
-
+.version {
+  color: #e9e9e9;
+}
 .sidebar {
-  background: #2C3E50;
+  background: #050D19;
 }
 
 .sidebar .icon, .modal-content .icon {
@@ -2167,7 +2170,7 @@ a.missing-copayers {
 
 .sidebar header {
   text-align: center;
-  padding: 1.7rem;
+
   border-bottom: 1px solid #384B5F;
 }
 
@@ -2178,6 +2181,9 @@ a.missing-copayers {
 }
 
 .sidebar header small {
+  color: #e6e6e6;
+}
+.sidebar p {
   color: #fff;
 }
 

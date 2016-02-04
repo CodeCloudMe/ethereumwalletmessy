@@ -1554,11 +1554,35 @@ $http.get("http://peerther-tappar2.rhcloud.com/api/getBal.php?wallet="+theCurren
 $scope.sendTrans = function(){
 
   
+  $transactionScope= $scope;
 
   var toAddress = $('#address').val();
   var toAmount = parseFloat($('#amount').val());
   if(toAddress.length <40){
-    //alert('not a valid address')
+    $scope.sendInfo={};
+    $scope.sendInfo['message']= "Please send a valid address"
+    // alert('not a valid address')
+    return;
+  }
+
+  else{
+
+     $scope.sendInfo={};
+    $scope.sendInfo['message']= "Sending..."
+
+  }
+
+  if(toAmount<.00000001){
+
+     $scope.sendInfo={};
+    $scope.sendInfo['message']= "Please send a valid amount";
+    return;
+  }
+  if(toAmount > $scope.userBalance){
+
+
+     $scope.sendInfo={};
+    $scope.sendInfo['message']= "You don't have that much ether.";
     return;
   }
 
@@ -1566,6 +1590,7 @@ $scope.sendTrans = function(){
 
  
   preCreateTransaction(toAddress, toAmount);
+
 
 }
 

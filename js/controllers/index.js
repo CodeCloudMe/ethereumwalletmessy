@@ -216,6 +216,10 @@ angular.module('copayApp.controllers').controller('indexController', function($r
       self.tab = 'walletHome';
 
     var changeTab = function() {
+
+      generateSingleWallet();
+
+      
       if (document.getElementById(self.tab)) {
         document.getElementById(self.tab).className = 'tab-out tab-view ' + self.tab;
         var old = document.getElementById('menu-' + self.tab);

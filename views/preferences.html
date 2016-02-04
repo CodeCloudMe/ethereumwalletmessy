@@ -20,14 +20,14 @@
       <div translate>Alias</div>
     </li>
 
-    <li ng-click="$root.go('preferencesEmail')">
+   <!-- <li ng-click="$root.go('preferencesEmail')">
       <div class="right text-gray">
         <span ng-if="!index.preferences.email" translate>Disabled</span>
         <span ng-if="index.preferences.email">{{index.preferences.email}}</span>
         <i class="icon-arrow-right3 size-24"></i>
       </div>
       <div translate>Email Notifications</div>
-    </li>
+    </li>-->
 
     <li ng-click="$root.go('preferencesColor')">
       <div class="right text-gray">
@@ -37,10 +37,10 @@
       <div translate>Color</div>
     </li>
 
-    <li ng-show="index.isPrivKeyExternal">
+   <!-- <li ng-show="index.isPrivKeyExternal">
       <div class="right text-gray">
         {{preferences.externalSource}} 
-        <!-- (Accont {{preferences.externalAccount}}) -->
+     
       </div>
       <div translate>Hardware wallet</div>
     </li> 
@@ -58,14 +58,14 @@
     <li ng-click="$root.go('preferencesAdvanced')">
       <i class="icon-arrow-right3 size-24 right text-gray"></i>  
       <div translate>Advanced</div>
-    </li>
+    </li>-->
 
   </ul>
 
-  <h4 translate  ng-show="index.canSign || !deleted">
+ <!-- <h4 translate  ng-show="index.canSign || !deleted">
     Security preferences
-  </h4>
-
+  </h4>-->
+<!--
   <div ng-show="!index.noFocusedWallet && index.canSign">
 
     <ul class="no-bullet m0">
@@ -81,8 +81,8 @@
       </li>
     </ul>
 
-  </div>
-  <div ng-show ="!deleted">
+  </div>-->
+  <!--<div ng-show ="!deleted">
 
     <ul class="no-bullet m0">
       <li ng-click="$root.go('deleteWords')">
@@ -91,7 +91,7 @@
       </li>
     </ul>
 
-  </div>
+  </div>-->
 
  <h4></h4>
 </div>
